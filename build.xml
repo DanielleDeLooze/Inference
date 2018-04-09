@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Inference" default="all">
+  
+  <dirname property="module.Inference.basedir" file="${ant.file}"/>
+  
+  <property name="compiler.args.Inference" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="Inference.output.dir" value="${module.Inference.basedir}/build"/>
+  
+  <path id="Inference.module.sourcepath">
+    <dirset dir="${module.Inference.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  <target name="clean.module.Inference" description="cleanup module">
+    <delete dir="${Inference.output.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.Inference" description="cleanup all"/>
+  
+  <target name="compile">
+	<mkdir dir="${Inference.output.dir}"/>
+    <javac srcdir="src/" destdir="${Inference.output.dir}"/>
+  </target>
+  
+  <target name="build.modules" depends="init, clean, compile" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
